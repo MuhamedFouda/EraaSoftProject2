@@ -16,10 +16,10 @@ const LoginRegister = () => {
               <input type="password" placeholder="PASSWORD" />
             </div>
             <button type="submit">REGISTER</button>
-          <div className="social_links">
-            <p className="social-text" >Or Sign in with social platforms</p>
-            <Socialmediaicons />
-          </div>
+            <div className="social_links">
+              <p className="social-text">Or Sign in with social platforms</p>
+              <Socialmediaicons />
+            </div>
           </form>
         </div>
         <div className="form-container sign-in-container">
