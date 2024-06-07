@@ -17,6 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@react-css/grid": "^2.2.0",
     "@react-icons/all-files": "^4.1.0",
+    "animate.css": "^4.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",

@@ -8,6 +8,7 @@ export default function LoginPage() {
   const navigate = useNavigate();
   return (
     <div className="container" id="LoginPage">
+      <div className="blue-area"></div>
       <div className="forms-container">
         <div className="signin-signup">
           <form action="#" className="sign-in-form">
@@ -37,10 +38,8 @@ export default function LoginPage() {
         <div className="panel left-panel">
           <img src={img} />
           <div className="content">
-            <h3>Sign Up</h3>
-            <p>
-              Register with your personal details to use all of site features
-            </p>
+            <h3>Not a member?</h3>
+            <p>Join our community and discover more!</p>
             <button
               className="btn transparent"
               id="sign-up-btn"

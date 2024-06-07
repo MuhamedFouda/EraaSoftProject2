@@ -1,11 +1,12 @@
 // import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import './index.scss'
-import { RecoilRoot } from 'recoil'
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.scss";
+import "animate.css";
+import { RecoilRoot } from "recoil";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <RecoilRoot>
     <App />
-  </RecoilRoot>,
-)
+  </RecoilRoot>
+);

@@ -5,15 +5,14 @@
   background-color: #fff;
   min-height: 100vh;
   overflow: hidden;
-  &::before {
-    content: "";
+  .blue-area {
     position: absolute;
     height: 2000px;
     width: 2000px;
     top: -10%;
-    right: 48%;
+    left: 48%;
     transform: translateY(-50%);
-    background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
+    background-color: #368fef;
     transition: 1.8s ease-in-out;
     border-radius: 50%;
     z-index: 6;
@@ -47,10 +46,19 @@
     top: 0;
     left: 0;
     .signin-signup {
+      // position: absolute;
+      // top: 50%;
+      // transform: translate(-50%, -50%);
+      // left: 75%;
+      // width: 50%;
+      // transition: 1s 0.7s ease-in-out;
+      // display: grid;
+      // grid-template-columns: 1fr;
+      // z-index: 5;
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
-      left: 75%;
+      left: 25%;
       width: 50%;
       transition: 1s 0.7s ease-in-out;
       display: grid;
@@ -139,11 +147,11 @@
     }
   }
   .panels-container {
-    position: absolute;
+    // position: absolute;
     height: 100%;
     width: 100%;
-    top: 0;
-    left: 0;
+    // top: 0;
+    // right: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     @media (max-width: 870px) {
@@ -151,15 +159,10 @@
       grid-template-rows: 1fr 2fr 1fr;
     }
     .panel {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      justify-content: space-around;
       text-align: center;
       z-index: 6;
       pointer-events: all;
       padding: 3rem 17% 2rem 12%;
-      position: relative;
       @media (max-width: 870px) {
         flex-direction: row;
         justify-content: space-around;
@@ -172,17 +175,27 @@
         width: 15rem;
         height: 7rem;
         position: absolute;
+        right: 0;
         top: 0;
-        left: 0;
         @media (max-width: 870px) {
           width: 10rem;
           height: 5rem;
+          left: 0;
         }
       }
       .content {
         color: #fff;
         transition: transform 0.9s ease-in-out;
         transition-delay: 0.6s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        left: 66%;
+        top: 50%;
+        transform: translate(0, -50%);
+        gap: 1rem;
         .buttons {
           display: flex;
           flex-direction: row;
@@ -191,9 +204,13 @@
           gap: 1rem;
         }
         @media (max-width: 870px) {
-          padding-right: 15%;
+          // padding-right: 15%;
           transition: transform 0.9s ease-in-out;
           transition-delay: 0.8s;
+          top: 18%;
+          left: 0;
+          gap: 0.5rem;
+          width: 100%;
         }
       }
       h3 {
@@ -205,10 +222,10 @@
         }
       }
       p {
-        font-size: 0.95rem;
+        font-size: 1rem;
         padding: 0.7rem 0;
         @media (max-width: 870px) {
-          font-size: 0.7rem;
+          font-size: 1rem;
           padding: 0.5rem 0;
         }
       }
