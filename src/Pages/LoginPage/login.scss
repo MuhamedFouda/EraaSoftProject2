@@ -1,3 +1,11 @@
+@keyframes moveLeft {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-60%);
+  }
+}
 #LoginPage {
   font-family: "Poppins", sans-serif;
   position: relative;
@@ -5,17 +13,28 @@
   background-color: #fff;
   min-height: 100vh;
   overflow: hidden;
+  .full-screen {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    background-color: #368fef;
+    transition: 1s ease-in-out;
+    z-index: 10;
+  }
   .blue-area {
     position: absolute;
     height: 2000px;
     width: 2000px;
-    top: -10%;
-    right: 48%;
-    transform: translateY(-50%);
-    background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
-    transition: 1.8s ease-in-out;
+    top: -100%;
+    background-color: #368fef;
+    transition: 1s ease-in-out;
     border-radius: 50%;
     z-index: 6;
+    animation: moveLeft 1s ease;
+    transform: translate(-60%);
+
     @media (max-width: 870px) {
       width: 1500px;
       height: 1500px;

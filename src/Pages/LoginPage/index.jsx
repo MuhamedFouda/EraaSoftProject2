@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
 import Socialmediaicons from "../../components/socialMediaIcons/Socialmediaicons";
 import "./login.scss";
@@ -6,9 +7,17 @@ import img from "../../assets/EraaSoft3.png";
 
 export default function LoginPage() {
   const navigate = useNavigate();
+  const [isFullScreen, setIsFullScreen] = useState(false);
+
+  const toggleFullScreen = () => {
+    setIsFullScreen(!isFullScreen);
+  };
+
   return (
-    <div className="container" id="LoginPage">
-      <div className="blue-area"></div>
+    <div
+      className={`container ${isFullScreen ? "full-screen" : ""}`}
+      id="LoginPage">
+      <div className={` ${isFullScreen ? "full-screen" : "blue-area"}`}></div>
       <div className="forms-container">
         <div className="signin-signup">
           <form action="#" className="sign-in-form">
@@ -33,7 +42,6 @@ export default function LoginPage() {
           </form>
         </div>
       </div>
-
       <div className="panels-container">
         <div className="panel left-panel">
           <img src={img} />
@@ -44,17 +52,16 @@ export default function LoginPage() {
               className="btn transparent"
               id="sign-up-btn"
               onClick={() => {
-                navigate("/register");
+                toggleFullScreen();
+                setTimeout(() => {
+                  navigate("/register");
+                }, 1000);
               }}>
               Sign up
             </button>
           </div>
-          {/* <img src="img/log.svg" className="image" alt="" /> */}
         </div>
       </div>
-      {
-        // joinType == "login" ? <Login /> : (joinType == "register" ? <SignUp /> : null)
-      }
     </div>
   );
 }

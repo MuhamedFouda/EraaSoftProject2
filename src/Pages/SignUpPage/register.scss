@@ -1,3 +1,11 @@
+@keyframes move {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(50%);
+  }
+}
 #Register {
   font-family: "Poppins", sans-serif;
   position: relative;
@@ -5,17 +13,27 @@
   background-color: #fff;
   min-height: 100vh;
   overflow: hidden;
+  .full-screen {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    background-color: #368fef;
+    transition: 1s ease-in-out;
+    z-index: 10;
+  }
   .blue-area {
     position: absolute;
     height: 2000px;
     width: 2000px;
-    top: -10%;
-    left: 48%;
-    transform: translateY(-50%);
+    top: -100%;
+    transform: translate(50%);
     background-color: #368fef;
-    transition: 1.8s ease-in-out;
+    transition: 1s ease-in-out;
     border-radius: 50%;
     z-index: 6;
+    animation: move 1s ease;
     @media (max-width: 870px) {
       width: 1500px;
       height: 1500px;
@@ -46,15 +64,6 @@
     top: 0;
     left: 0;
     .signin-signup {
-      // position: absolute;
-      // top: 50%;
-      // transform: translate(-50%, -50%);
-      // left: 75%;
-      // width: 50%;
-      // transition: 1s 0.7s ease-in-out;
-      // display: grid;
-      // grid-template-columns: 1fr;
-      // z-index: 5;
       position: absolute;
       top: 50%;
       transform: translate(-50%, -50%);
@@ -147,11 +156,8 @@
     }
   }
   .panels-container {
-    // position: absolute;
     height: 100%;
     width: 100%;
-    // top: 0;
-    // right: 0;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     @media (max-width: 870px) {
