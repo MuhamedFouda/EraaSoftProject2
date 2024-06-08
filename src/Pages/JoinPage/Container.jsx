@@ -3,18 +3,21 @@ import Socialmediaicons from "../../components/socialMediaIcons/Socialmediaicons
 import "./index.scss";
 import { toast } from "react-toastify";
 import { useRecoilState } from "recoil";
-import { $Users } from "../../store/atom";
+import { $Domain } from "../../store/atom";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import img from "../../assets/EraaSoft3.png";
+import axios from "axios";
 
 export default function JoinPage() {
   const params = useParams();
   const [joinType, setjoinType] = useState();
-  const [Users] = useRecoilState($Users);
+  const [Domain] = useRecoilState($Domain);
   const email = useRef();
   const password = useRef();
-  const re_password = useRef();
+  const password_confirmation = useRef();
+  const name = useRef();
+  const phone = useRef();
 
   const navigate = useNavigate();
 
@@ -32,41 +35,111 @@ export default function JoinPage() {
   };
 
   function searchMail(email) {
-    let emailIndex = Users.findIndex((user) => {
-      return user.email.toLowerCase() == email.toLowerCase();
-    });
-    if (emailIndex == -1) {
-      //email not found in our sys. Invoke to registration
-      setjoinType("register");
-      // alert("register");
-      toast.error(`Your Email don't Exisit , Please Sign Up`, {
-        theme: "dark",
+    console.log(Domain.base + "/api/auth/check-email");
+    let emailIndex = axios
+      .post(
+        Domain.base + "/api/auth/check-email",
+        {
+          email: email,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        if (res.data.data) {
+          //email found in our sys. Invoke to login
+          setjoinType("login");
+          toast.success(`Your Email Exisit , Sign In`, { theme: "dark" });
+        } else {
+          //email not found in our sys. Invoke to registration
+          setjoinType("register");
+          toast.error(`Your Email don't Exisit , Please Sign Up`, {
+            theme: "dark",
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
       });
-    } else {
-      //email found in our sys. Invoke to login
-      setjoinType("login");
-      toast.success(`Your Email Exisit , Sign In`, { theme: "dark" });
-      // alert("login");
+  }
+
+  function join() {
+    if (joinType == "login") {
+      login();
+    } else if (joinType == "register") {
+      register();
     }
   }
 
-  // useEffect(() => {
-  //   if (params.join_type == "register") {
-  //     setjoinType("register");
-  //   } else if (params.join_type == "login") {
-  //     setjoinType("login");
-  //   } else if (params.join_type == undefined) {
-  //     console.log(params.join_type);
-  //   } else {
-  //     navigate("/page404");
-  //   }
-  // }, []);
+  function login() {
+    axios
+      .post(
+        Domain.base + "/api/auth/login",
+        {
+          email: email.current.value,
+          password: password.current.value,
+        },
+        {
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        //email found in our sys. Invoke to login
+        console.log(res.data.data);
+        toast.success(res.data.message, { theme: "dark" });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function register() {
+    axios
+      .post(
+        Domain.base + "/api/auth/register",
+        {
+          email: email.current.value,
+          name: name.current.value,
+          phone: phone.current.value,
+          password: password.current.value,
+          password_confirmation: password_confirmation.current.value,
+        },
+        {
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        //email found in our sys. Invoke to login
+        console.log(res.data.data);
+        toast.success(res.data.message, { theme: "dark" });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
   return (
     <div className="container" id="join-container">
       <div className="forms-container">
         <div className="signin-signup">
-          <form action="#" className="sign-in-form">
+          <form
+            onSubmit={(event) => {
+              join();
+              event.preventDefault();
+            }}
+            method="POST"
+            className="sign-in-form"
+          >
             {joinType == "login" ? (
               <h2 className="title">login</h2>
             ) : joinType == "register" ? (
@@ -94,6 +167,7 @@ export default function JoinPage() {
                   <input
                     type="password"
                     name="password"
+                    ref={password}
                     placeholder="Password"
                   />
                 </div>
@@ -105,13 +179,13 @@ export default function JoinPage() {
                   <i>
                     <FaUser />
                   </i>
-                  <input type="text" name="name" placeholder="Username" />
+                  <input type="text" name="name" ref={name} placeholder="Username" />
                 </div>
                 <div className="input-field">
                   <i>
                     <FaPhone />
                   </i>
-                  <input type="text" name="phone" placeholder="Phone" />
+                  <input type="text" name="phone" ref={phone} placeholder="Phone" />
                 </div>
                 <div className="input-field">
                   <i>
@@ -120,6 +194,7 @@ export default function JoinPage() {
                   <input
                     type="password"
                     name="password"
+                    ref={password}
                     placeholder="Password"
                   />
                 </div>
@@ -130,6 +205,7 @@ export default function JoinPage() {
                   <input
                     type="password"
                     name="password_confirmation"
+                    ref={password_confirmation}
                     placeholder="Confirm Password"
                   />
                 </div>
