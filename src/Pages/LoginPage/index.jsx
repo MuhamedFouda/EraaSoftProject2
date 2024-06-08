@@ -14,13 +14,13 @@ export default function LoginPage() {
   };
 
   return (
-    <div
-      className={`container ${isFullScreen ? "full-screen" : ""}`}
-      id="LoginPage">
+    <div className={` ${isFullScreen ? "full-screen" : ""}`} id="LoginPage">
       <div className={` ${isFullScreen ? "full-screen" : "blue-area"}`}></div>
       <div className="forms-container">
         <div className="signin-signup">
-          <form action="#" className="sign-in-form">
+          <form
+            action="#"
+            className={`sign-in-form ${isFullScreen ? "d-none" : ""}`}>
             <h2 className="title">login</h2>
 
             <div className="input-field">

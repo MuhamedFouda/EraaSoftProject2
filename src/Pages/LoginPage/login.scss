@@ -22,23 +22,29 @@
     background-color: #368fef;
     transition: 1s ease-in-out;
     z-index: 10;
+    @media (max-width: 870px) {
+      transform: translatex(50%);
+      transition: 1s ease;
+    }
   }
   .blue-area {
     position: absolute;
     height: 2000px;
-    width: 2000px;
+    width: 130%;
     top: -100%;
+    left: 0;
     background-color: #368fef;
     transition: 1s ease-in-out;
     border-radius: 50%;
     z-index: 6;
     animation: moveLeft 1s ease;
     transform: translate(-60%);
-
     @media (max-width: 870px) {
       width: 1500px;
       height: 1500px;
       transform: translateX(-50%);
+      animation: moveUp 1s ease;
+
       left: 30%;
       bottom: 68%;
       right: initial;

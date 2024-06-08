@@ -6,6 +6,22 @@
     transform: translate(50%);
   }
 }
+@keyframes moveUp {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(-50%);
+  }
+}
+@keyframes move {
+  from {
+    transform: translate(0);
+  }
+  to {
+    transform: translate(50%);
+  }
+}
 #Register {
   font-family: "Poppins", sans-serif;
   position: relative;
@@ -20,13 +36,17 @@
     top: 0;
     right: 0;
     background-color: #368fef;
-    transition: 1s ease-in-out;
+    transition: 1s ease;
     z-index: 10;
+    @media (max-width: 870px) {
+      transform: translatex(50%);
+      transition: 1s ease;
+    }
   }
   .blue-area {
     position: absolute;
     height: 2000px;
-    width: 2000px;
+    width: 120%;
     top: -100%;
     transform: translate(50%);
     background-color: #368fef;
@@ -37,7 +57,8 @@
     @media (max-width: 870px) {
       width: 1500px;
       height: 1500px;
-      transform: translateX(-50%);
+      transform: translate(-50%);
+      animation: moveUp 1s ease;
       left: 30%;
       bottom: 68%;
       right: initial;

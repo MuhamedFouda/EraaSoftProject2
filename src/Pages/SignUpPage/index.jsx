@@ -14,10 +14,8 @@ export default function Register() {
   }
 
   return (
-    <div
-      className={`container ${isFullScreen ? "full-screen" : ""}`}
-      id="Register">
-      <div className={` ${isFullScreen ? "full-screen" : "blue-area"} `}></div>
+    <div className={` ${isFullScreen ? "full-screen" : ""}`} id="Register">
+      <div className={` ${isFullScreen ? "full-screen" : "blue-area"}`}></div>
       <div className="panels-container">
         <div className="panel">
           <img src={img} />
@@ -39,7 +37,7 @@ export default function Register() {
         </div>
       </div>
       <div className="forms-container">
-        <div className="signin-signup">
+        <div className={`signin-signup ${isFullScreen ? `d-none` : null}`}>
           <form action="#" className="sign-in-form">
             <h2 className="title">Sign Up</h2>
 
