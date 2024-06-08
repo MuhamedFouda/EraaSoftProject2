@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
+import { FaUser, FaLock, FaPhone } from "react-icons/fa";
 import Socialmediaicons from "../../components/socialMediaIcons/Socialmediaicons";
 import { useNavigate } from "react-router-dom";
 import img from "../../assets/EraaSoft3.png";
@@ -30,7 +30,8 @@ export default function Register() {
                 setTimeout(() => {
                   navigate("/login");
                 }, 1000);
-              }}>
+              }}
+            >
               Sign In
             </button>
           </div>
@@ -45,20 +46,35 @@ export default function Register() {
               <i>
                 <FaUser />
               </i>
-              <input type="text" placeholder="Username" />
+              <input type="text" name="email" placeholder="Email" />
             </div>
-
+            <div className="input-field">
+              <i>
+                <FaUser />
+              </i>
+              <input type="text" name="name" placeholder="Usename" />
+            </div>
+            <div className="input-field">
+              <i>
+                <FaPhone />
+              </i>
+              <input type="text" name="phone" placeholder="Phone" />
+            </div>
             <div className="input-field">
               <i>
                 <FaLock />
               </i>
-              <input type="password" placeholder="Password" />
+              <input type="password" name="passowrd" placeholder="Password" />
             </div>
             <div className="input-field">
               <i>
                 <FaLock />
               </i>
-              <input type="password" placeholder="Confirm Password" />
+              <input
+                type="password"
+                name="password_confirmation"
+                placeholder="Confirm Password"
+              />
             </div>
             <input type="submit" value="Sign Up" className="btn solid" />
 

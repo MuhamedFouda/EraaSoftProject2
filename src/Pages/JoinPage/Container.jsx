@@ -1,4 +1,4 @@
-import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
+import { FaUser, FaLock, FaPhone } from "react-icons/fa";
 import Socialmediaicons from "../../components/socialMediaIcons/Socialmediaicons";
 import "./index.scss";
 import { toast } from "react-toastify";
@@ -79,7 +79,8 @@ export default function JoinPage() {
               </i>
               <input
                 type="text"
-                placeholder="Username"
+                name="email"
+                placeholder="Email"
                 ref={email}
                 onChange={handleChange}
               />
@@ -90,7 +91,11 @@ export default function JoinPage() {
                   <i>
                     <FaLock />
                   </i>
-                  <input type="password" placeholder="Password" />
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
                 </div>
                 <input type="submit" value="Login" className="btn solid" />
               </>
@@ -98,15 +103,35 @@ export default function JoinPage() {
               <>
                 <div className="input-field">
                   <i>
-                    <FaLock />
+                    <FaUser />
                   </i>
-                  <input type="password" placeholder="Password" />
+                  <input type="text" name="name" placeholder="Username" />
+                </div>
+                <div className="input-field">
+                  <i>
+                    <FaPhone />
+                  </i>
+                  <input type="text" name="phone" placeholder="Phone" />
                 </div>
                 <div className="input-field">
                   <i>
                     <FaLock />
                   </i>
-                  <input type="password" placeholder="Retype Password" />
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="Password"
+                  />
+                </div>
+                <div className="input-field">
+                  <i>
+                    <FaLock />
+                  </i>
+                  <input
+                    type="password"
+                    name="password_confirmation"
+                    placeholder="Confirm Password"
+                  />
                 </div>
                 <input type="submit" value="Register" className="btn solid" />
               </>
@@ -130,7 +155,8 @@ export default function JoinPage() {
                 id="sign-up-btn"
                 onClick={() => {
                   navigate("/login");
-                }}>
+                }}
+              >
                 Sign In
               </button>
               <button
@@ -138,7 +164,8 @@ export default function JoinPage() {
                 id="sign-up-btn"
                 onClick={() => {
                   navigate("/register");
-                }}>
+                }}
+              >
                 Sign up
               </button>
             </div>

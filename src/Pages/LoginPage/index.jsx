@@ -27,14 +27,14 @@ export default function LoginPage() {
               <i>
                 <FaUser />
               </i>
-              <input type="text" placeholder="Username" />
+              <input type="text" name="email" placeholder="Email" />
             </div>
 
             <div className="input-field">
               <i>
                 <FaLock />
               </i>
-              <input type="password" placeholder="Password" />
+              <input type="password" name="password" placeholder="Password" />
             </div>
             <input type="submit" value="Login" className="btn solid" />
 
