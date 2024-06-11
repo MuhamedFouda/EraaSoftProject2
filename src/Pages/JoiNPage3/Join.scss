@@ -1,0 +1,275 @@
+@import '../../styels/normaliz.scss';
+$button_color: #358fef;
+$button_color_hover: white;
+$button_border_hover: #04c0fe;
+
+@mixin flex($direction: row, $wrap: wrap, $justify: center, $align: center, $gap: 0) {
+  display: flex;
+  flex-direction: $direction ;
+  flex-wrap: $wrap;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+.joinPage {
+  width: 100%;
+  height: 100vh;
+  @include flex(row-reverse, wrap, center, center);
+  // display: flex;
+  // flex-direction: row-reverse;
+  // flex-wrap: wrap;
+  // align-items: center;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 850px) {
+    @include flex(column-reverse, wrap, flex-start, flex-start);
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: 2000px;
+    width: 2000px;
+    top: -10%;
+    right: 45%;
+    transform: translateY(-50%);
+    background-image: linear-gradient(-45deg, #4481eb 0%, #04befe 100%);
+    transition: 1.8s ease-in-out;
+    border-radius: 50%;
+
+    @media (max-width: 850px) {
+      width: 1500px;
+      height: 1500px;
+      transform: translateX(-50%);
+      left: 50%;
+      bottom: 70%;
+      right: initial;
+      top: initial;
+      transition: 2s ease-in-out;
+    }
+  }
+
+  .joinForm {
+    height: 100%;
+    @include flex(column, nowrap, center, center);
+
+    // display: flex;
+    // flex-direction: column;
+    // justify-content:center;
+    // align-items: center;
+    @media (max-width: 850px) {
+      width: 100%;
+      height: 70%;
+    }
+
+    .form {
+      width: 100%;
+      @include flex(column, nowrap, center, center);
+
+      // display: flex;
+      // flex-direction: column;
+      // justify-content:center;
+      // align-items: center;
+      .input-field {
+        max-width: 380px;
+        width: 100%;
+        background-color: #f0f0f0;
+        margin: 10px 0;
+        height: 55px;
+        border-radius: 55px;
+        display: grid;
+        grid-template-columns: 15% 85%;
+        border-radius: 45px;
+        padding: 0 0.4rem;
+        position: relative;
+
+        i {
+          text-align: center;
+          line-height: 55px;
+          color: #acacac;
+          transition: 0.5s;
+          font-size: 1.1rem;
+
+          @media (max-width: 850px) {
+            line-height: 35px;
+          }
+        }
+
+        input {
+          background: none;
+          outline: none;
+          border: none;
+          line-height: 1;
+          font-weight: 600;
+          font-size: 1.1rem;
+          color: #333;
+
+          &::placeholder {
+            color: #aaa;
+            font-weight: 500;
+          }
+
+          @media (max-width: 850px) {
+            font-weight: 400;
+            font-size: 1.1rem;
+            height: 35px;
+            border-radius: 45px;
+          }
+        }
+
+        @media (max-width: 850px) {
+          height: 35px;
+        }
+      }
+
+      .submit {
+        // color: white;
+        border-radius: 20px;
+        max-width: 370px;
+        width: 100%;
+        height: 3rem;
+        border: none;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-top: 1rem;
+        background-color: white;
+        color: black;
+        border: 1px solid rgba(187, 187, 187, 0.31);
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        text-transform: uppercase;
+        transition-delay: .8s;
+
+        &::after {
+          content: "";
+          position: absolute;
+          background: $button_color;
+          width: 2%;
+          height: 100%;
+          top: 0px;
+          left: 0px;
+          z-index: -1;
+          transition: 1s linear;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          background: $button_color;
+          width: 2%;
+          height: 100%;
+          top: 0px;
+          right: 0px;
+          z-index: -1;
+          transition: 1s linear;
+        }
+
+        &:hover::after {
+          width: 52%;
+          color: white;
+        }
+
+        &:hover::before {
+          width: 52%;
+        }
+
+        &:hover {
+          color: $button_color_hover;
+        }
+      }
+    }
+  }
+
+  .joinPanel {
+    height: 100%;
+    @include flex(column, nowrap, flex-start, center);
+    // display: flex;
+    // justify-content: flex-start;
+    // align-items: center;
+    // justify-content: center;
+    padding-left: 4rem;
+    color: white;
+    position: relative;
+
+    @media (max-width: 850px) {
+      width: 100%;
+      height: 30%;
+      padding-left: 0rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    // .logo-img {
+    //   width: 15rem;
+    //   height: 7rem;
+    //   position: absolute;
+    //   top: 0;
+    //   left: 0;
+    // }
+
+    .content {
+      width: 90%;
+      @include flex(column, nowrap, flex-start, flex-start, 1rem);
+      padding-top: 15rem;
+
+      // display: flex;
+      // flex-direction: column;
+      // justify-content:flex-start;
+      // align-items: flex-start;
+      // gap: 1rem;
+      @media (max-width: 990px) and (min-width:851px){
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-top: 22rem;
+      }
+      @media (max-width: 850px){
+        justify-content: center;
+        align-items: center;
+        padding-top: 4rem;
+      }
+
+      .buttons {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        gap: 1rem;
+
+        button {
+          background-color: transparent;
+          color: white;
+          border-radius: 20px;
+          width: 10rem;
+
+          &:hover {
+            background-color: $button_color_hover;
+            border: 1px solid $button_color;
+            color: $button_color;
+          }
+        }
+      }
+    }
+
+    .absolute {
+      width: 30rem;
+      height: 20rem;
+      transform: translate(50px, 370px);
+      @media (max-width: 850px) {
+        transform: translate(600px, 0px);
+        width: 20rem;
+        height: 15rem;
+      }
+      @media (max-width: 768px) {
+        transform: translate(550px, 0px);
+        width: 20rem;
+        height: 20rem;
+      }
+    }
+  }
+}
