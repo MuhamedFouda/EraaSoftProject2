@@ -1,4 +1,3 @@
-//import React from "react";
 import "./style.scss";
 import { FaFacebookF, FaGoogle, FaGithub, FaLinkedinIn } from "react-icons/fa6";
 
