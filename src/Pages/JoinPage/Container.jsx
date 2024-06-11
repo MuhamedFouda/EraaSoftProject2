@@ -9,7 +9,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import img from "../../assets/EraaSoft3.png"
 
 export default function JoinPage() {
-  const params = useParams();
   const [joinType, setjoinType] = useState();
   const [Domain] = useRecoilState($Domain);
   const email = useRef();
@@ -33,20 +32,69 @@ export default function JoinPage() {
   };
 
   function searchMail(email) {
-    let emailIndex = Users.findIndex((user) => {
-      return user.email.toLowerCase() == email.toLowerCase();
-    });
-    if (emailIndex == -1) {
-      //email not found in our sys. Invoke to registration
-      setjoinType("register");
-      // alert("register");
-      toast.error(`Your Email don't Exisit , Please Sign Up`, { theme: "dark" })
-    } else {
-      //email found in our sys. Invoke to login
-      setjoinType("login");
-      toast.success(`Your Email Exisit , Sign In`, { theme: "dark" })
-      // alert("login");
+    console.log(Domain.base + "/api/auth/check-email");
+    axios.post(
+        Domain.base + "/api/auth/check-email",
+        {
+          email: email,
+        },
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+        )
+        .then((res) => {
+          console.log(res.data.data);
+          if (res.data.data) {
+          //email found in our sys. Invoke to login
+          setjoinType("login");
+          toast.success(`Your Email Exisit , Sign In`, { theme: "dark" });
+        } else {
+          //email not found in our sys. Invoke to registration
+          setjoinType("register");
+          toast.error(`Your Email don't Exisit , Please Sign Up`, {
+            theme: "dark",
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
+  function join() {
+    if (joinType == "login") {
+      login();
+    } else if (joinType == "register") {
+      register();
     }
+  }
+
+  function login() {
+    axios
+      .post(
+        Domain.base + "/api/auth/login",
+        {
+          email: email.current.value,
+          password: password.current.value,
+        },
+        {
+          headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        //email found in our sys. Invoke to login
+        console.log(res.data.data);
+        toast.success(res.data.message, { theme: "dark" });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   function register() {
@@ -90,9 +138,9 @@ export default function JoinPage() {
             className="sign-in-form"
           >
             {joinType == "login" ? (
-              <h2 className="title">login</h2>
+              <h2 className="title">LOGIN</h2>
             ) : joinType == "register" ? (
-              <h2 className="title">Register</h2>
+              <h2 className="title">REGISTER</h2>
             ) : null}
 
             <div className="input-field">
@@ -118,7 +166,7 @@ export default function JoinPage() {
                     placeholder="Password"
                   />
                 </div>
-                <input type="submit" value="Login" className="btn solid" />
+                <input type="submit" value="Login" className="btn solid" onClick={login}/>
               </>
             ) : joinType == "register" ? (
               <>
@@ -156,7 +204,7 @@ export default function JoinPage() {
                     placeholder="Confirm Password"
                   />
                 </div>
-                <input type="submit" value="Register" className="btn solid" />
+                <input type="submit" value="Register" className="btn solid" onClick={register}/>
               </>
             ) : null}
 

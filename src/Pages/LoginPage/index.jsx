@@ -28,8 +28,7 @@ export default function LoginPage() {
         {
           email: email.current.value,
           password: password.current.value,
-        },
-        {
+        },{
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",

@@ -5,7 +5,6 @@ import "react-toastify/dist/ReactToastify.css";
 import JoinPage from "./Pages/JoinPage/Container.jsx";
 import LoginPage from "./Pages/LoginPage/index.jsx";
 import Register from "./Pages/SignUpPage/index.jsx";
-import HomePage from "./Pages/HomePage/Index";
 
 export default function App() {
   return (
@@ -17,7 +16,6 @@ export default function App() {
             <Route path="join" element={<JoinPage />} />
             <Route path="login" element={<LoginPage />} />
             <Route path="register" element={<Register />} />
-            <Route path="home" element={<HomePage />} />
           </Route>
         </Routes>
         <ToastContainer
