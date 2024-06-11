@@ -39,13 +39,11 @@ export default function JoinPage() {
       //email not found in our sys. Invoke to registration
       setjoinType("register");
       // alert("register");
-      toast.error(`Your Email don't Exisit , Please Sign Up`, {
-        theme: "dark",
-      });
+      toast.error(`Your Email does not Exist , Please Sign Up`, { theme: "dark" })
     } else {
       //email found in our sys. Invoke to login
       setjoinType("login");
-      toast.success(`Your Email Exisit , Sign In`, { theme: "dark" });
+      toast.success(`Your Email Exist , Sign In`, { theme: "dark" })
       // alert("login");
     }
   }
@@ -74,9 +72,7 @@ export default function JoinPage() {
             ) : null}
 
             <div className="input-field">
-              <i>
-                <FaUser />
-              </i>
+              <i> <FaUser /> </i>
               <input
                 type="text"
                 placeholder="Username"

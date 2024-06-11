@@ -16,21 +16,22 @@
   display: flex;
 }
 
-.sym {
-  height: 46px;
-  width: 46px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 0.45rem;
-  color: #333;
-  border-radius: 50%;
-  border: 1px solid #333;
-  text-decoration: none;
-  font-size: 1.3rem;
-  transition: 0.3s;
-}
-.sym:hover {
-  color: #4481eb;
-  border-color: #4481eb;
-}
+    .sym {
+        height: 46px;
+        width: 46px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 0.45rem;
+        color: #333;
+        border-radius: 50%;
+        border: 1px solid #333;
+        text-decoration: none;
+        font-size: 1.3rem;
+        transition: 0.3s;
+    }
+    .sym:hover {
+        color: #4481eb;
+        border-color: #4481eb;
+        cursor: pointer;
+    }
