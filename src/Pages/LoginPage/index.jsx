@@ -57,8 +57,7 @@ export default function LoginPage() {
               event.preventDefault();
             }}
             method="POST"
-            className={`sign-in-form ${isFullScreen ? "d-none" : ""}`}
-          >
+            className={`sign-in-form ${isFullScreen ? "d-none" : ""}`}>
             <h2 className="title">login</h2>
 
             <div className="input-field">
@@ -99,8 +98,7 @@ export default function LoginPage() {
                 setTimeout(() => {
                   navigate("/register");
                 }, 1000);
-              }}
-            >
+              }}>
               Sign up
             </button>
           </div>
