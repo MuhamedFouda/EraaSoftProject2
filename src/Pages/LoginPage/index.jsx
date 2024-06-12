@@ -47,62 +47,105 @@ export default function LoginPage() {
   }
 
   return (
-    <div className={` ${isFullScreen ? "full-screen" : ""}`} id="LoginPage">
-      <div className={` ${isFullScreen ? "full-screen" : "blue-area"}`}></div>
-      <div className="forms-container">
-        <div className="signin-signup">
-          <form
-            onSubmit={(event) => {
-              login();
-              event.preventDefault();
-            }}
-            method="POST"
-            className={`sign-in-form ${isFullScreen ? "d-none" : ""}`}>
-            <h2 className="title">login</h2>
+    // <div className={` ${isFullScreen ? "full-screen" : ""}`} id="LoginPage">
+    //   <div className={` ${isFullScreen ? "full-screen" : "blue-area"}`}></div>
+    //   <div className="forms-container">
+    //     <div className="signin-signup">
+    //       <form
+    //         onSubmit={(event) => {
+    //           login();
+    //           event.preventDefault();
+    //         }}
+    //         method="POST"
+    //         className={`sign-in-form ${isFullScreen ? "d-none" : ""}`}>
+    //         <h2 className="title">login</h2>
 
-            <div className="input-field">
-              <i>
-                <FaUser />
-              </i>
-              <input type="text" name="email" ref={email} placeholder="Email" />
-            </div>
+    //         <div className="input-field">
+    //           <i>
+    //             <FaUser />
+    //           </i>
+    //           <input type="text" name="email" ref={email} placeholder="Email" />
+    //         </div>
 
-            <div className="input-field">
-              <i>
-                <FaLock />
-              </i>
-              <input
-                type="password"
-                name="password"
-                ref={password}
-                placeholder="Password"
-              />
-            </div>
-            <input type="submit" value="Login" className="btn solid" />
+    //         <div className="input-field">
+    //           <i>
+    //             <FaLock />
+    //           </i>
+    //           <input
+    //             type="password"
+    //             name="password"
+    //             ref={password}
+    //             placeholder="Password"
+    //           />
+    //         </div>
+    //         <input type="submit" value="Login" className="btn solid" />
 
-            <Socialmediaicons />
-          </form>
+    //         <Socialmediaicons />
+    //       </form>
+    //     </div>
+    //   </div>
+    //   <div className="panels-container">
+    //     <div className="panel left-panel">
+    //       <img src={img} />
+    //       <div className="content">
+    //         <h3>Not a member?</h3>
+    //         <p>Join our community and discover more!</p>
+    //         <button
+    //           className="btn transparent"
+    //           id="sign-up-btn"
+    //           onClick={() => {
+    //             toggleFullScreen();
+    //             setTimeout(() => {
+    //               navigate("/register");
+    //             }, 1000);
+    //           }}>
+    //           Sign up
+    //         </button>
+    //       </div>
+    //     </div>
+    //   </div>
+    // </div>
+    <div className="col-12 p-5" id="Login">
+      <img src={img} alt="" className="logo" />
+      <form
+        className="col-5 "
+        onSubmit={(event) => {
+          login();
+          event.preventDefault();
+        }}
+        method="POST">
+        <h1>Login</h1>
+        <div className="input-field">
+          <FaEnvelope />
+          <input
+            type="email"
+            placeholder="Email"
+            ref={email}
+            className="col-12"
+          />
         </div>
-      </div>
-      <div className="panels-container">
-        <div className="panel left-panel">
-          <img src={img} />
-          <div className="content">
-            <h3>Not a member?</h3>
-            <p>Join our community and discover more!</p>
-            <button
-              className="btn transparent"
-              id="sign-up-btn"
-              onClick={() => {
-                toggleFullScreen();
-                setTimeout(() => {
-                  navigate("/register");
-                }, 1000);
-              }}>
-              Sign up
-            </button>
-          </div>
+
+        <div className="input-field">
+          <FaLock />
+          <input type="password" ref={password} placeholder="Password" />
         </div>
+
+        <button className="submitBtn">Login</button>
+        <Socialmediaicons />
+      </form>
+      <div className={`${isFullScreen ? `full-Screen` : `blueArea`}`}></div>
+      <div className="content position-absolute d-flex justify-content-center align-items-center flex-column gap-3">
+        <h3>Welcome to our community</h3>
+        <p>Register Now!</p>
+        <button
+          onClick={() => {
+            setIsFullScreen(true);
+            setTimeout(() => {
+              navigate("/register");
+            }, 500);
+          }}>
+          Sign in
+        </button>
       </div>
     </div>
   );
