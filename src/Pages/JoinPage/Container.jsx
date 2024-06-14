@@ -6,14 +6,17 @@ import { useRecoilState } from "recoil";
 import { $Domain } from "../../store/atom";
 import { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import img from "../../assets/EraaSoft3.png"
+import img from "../../assets/EraaSoft3.png";
+import axios from "axios";
 
 export default function JoinPage() {
   const [joinType, setjoinType] = useState();
   const [Domain] = useRecoilState($Domain);
   const email = useRef();
+  const name = useRef();
+  const phone = useRef();
   const password = useRef();
-  const re_password = useRef();
+  const password_confirmation = useRef();
 
 
   const navigate = useNavigate();
@@ -24,6 +27,7 @@ export default function JoinPage() {
     let email_valid = pattern.test(email_value);
     if (email_valid) {
       // valid email pattern
+      console.log(email_value);
       searchMail(email_value);
     } else {
       //incorrect email pattern
