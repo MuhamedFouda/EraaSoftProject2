@@ -10,14 +10,14 @@ import img from "../../assets/EraaSoft3.png";
 import axios from "axios";
 
 export default function JoinPage() {
-  const params = useParams();
   const [joinType, setjoinType] = useState();
   const [Domain] = useRecoilState($Domain);
   const email = useRef();
-  const password = useRef();
-  const password_confirmation = useRef();
   const name = useRef();
   const phone = useRef();
+  const password = useRef();
+  const password_confirmation = useRef();
+
 
   const navigate = useNavigate();
 
@@ -27,6 +27,7 @@ export default function JoinPage() {
     let email_valid = pattern.test(email_value);
     if (email_valid) {
       // valid email pattern
+      console.log(email_value);
       searchMail(email_value);
     } else {
       //incorrect email pattern
@@ -36,8 +37,7 @@ export default function JoinPage() {
 
   function searchMail(email) {
     console.log(Domain.base + "/api/auth/check-email");
-    let emailIndex = axios
-      .post(
+    axios.post(
         Domain.base + "/api/auth/check-email",
         {
           email: email,
@@ -48,9 +48,10 @@ export default function JoinPage() {
             "Content-Type": "application/json",
           },
         }
-      )
-      .then((res) => {
-        if (res.data.data) {
+        )
+        .then((res) => {
+          console.log(res.data.data);
+          if (res.data.data) {
           //email found in our sys. Invoke to login
           setjoinType("login");
           toast.success(`Your Email Exisit , Sign In`, { theme: "dark" });
@@ -141,15 +142,13 @@ export default function JoinPage() {
             className="sign-in-form"
           >
             {joinType == "login" ? (
-              <h2 className="title">login</h2>
+              <h2 className="title">LOGIN</h2>
             ) : joinType == "register" ? (
-              <h2 className="title">Register</h2>
+              <h2 className="title">REGISTER</h2>
             ) : null}
 
             <div className="input-field">
-              <i>
-                <FaUser />
-              </i>
+              <i> <FaUser /> </i>
               <input
                 type="text"
                 name="email"
@@ -171,7 +170,7 @@ export default function JoinPage() {
                     placeholder="Password"
                   />
                 </div>
-                <input type="submit" value="Login" className="btn solid" />
+                <input type="submit" value="Login" className="btn solid" onClick={login}/>
               </>
             ) : joinType == "register" ? (
               <>
@@ -209,7 +208,7 @@ export default function JoinPage() {
                     placeholder="Confirm Password"
                   />
                 </div>
-                <input type="submit" value="Register" className="btn solid" />
+                <input type="submit" value="Register" className="btn solid" onClick={register}/>
               </>
             ) : null}
 

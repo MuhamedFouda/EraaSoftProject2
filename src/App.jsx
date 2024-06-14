@@ -1,5 +1,3 @@
-// import React from "react";
-// import LoginRegister from "./components/log-reg/LoginRegister";
 import "./App.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
