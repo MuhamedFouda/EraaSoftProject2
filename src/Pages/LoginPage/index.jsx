@@ -68,18 +68,10 @@ export default function LoginPage() {
               <input type="text" name="email" ref={email} placeholder="Email" />
             </div>
 
-            <div className="input-field">
-              <i>
-                <FaLock />
-              </i>
-              <input
-                type="password"
-                name="password"
-                ref={password}
-                placeholder="Password"
-              />
-            </div>
-            <input type="submit" value="Login" className="btn solid" />
+        <div className="input-field">
+          <FaLock />
+          <input type="password" ref={password} placeholder="Password" />
+        </div>
 
             <Socialmediaicons />
           </form>
