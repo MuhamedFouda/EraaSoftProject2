@@ -28,7 +28,8 @@ export default function LoginPage() {
         {
           email: email.current.value,
           password: password.current.value,
-        },{
+        },
+        {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
@@ -56,7 +57,8 @@ export default function LoginPage() {
               event.preventDefault();
             }}
             method="POST"
-            className={`sign-in-form ${isFullScreen ? "d-none" : ""}`}>
+            className={`sign-in-form ${isFullScreen ? "d-none" : ""}`}
+          >
             <h2 className="title">login</h2>
 
             <div className="input-field">
@@ -97,7 +99,8 @@ export default function LoginPage() {
                 setTimeout(() => {
                   navigate("/register");
                 }, 1000);
-              }}>
+              }}
+            >
               Sign up
             </button>
           </div>
